@@ -6,9 +6,8 @@ sys.path.append(str(root))
 
 import pytest
 from sklearn.model_selection import train_test_split
-
-from titanic_model.config.core import config
-from titanic_model.processing.data_manager import _load_raw_dataset
+from bikeshare_model.config.core import config
+from bikeshare_model.processing.data_manager import _load_raw_dataset
 
 @pytest.fixture
 def sample_input_data():

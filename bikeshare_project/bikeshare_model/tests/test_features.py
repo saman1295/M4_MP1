@@ -9,19 +9,16 @@ parent, root = file.parent, file.parents[1]
 sys.path.append(str(root))
 
 import numpy as np
-from titanic_model.config.core import config
-from titanic_model.processing.features import age_col_tfr
+from bikeshare_model.config.core import config
+from bikeshare_model.processing.features import WeathersitImputer
 
 
-def test_age_variable_transformer(sample_input_data):
+def test_weathersit_imputation(sample_input_data):
     # Given
-    transformer = age_col_tfr(
-        variables=config.model_config.age_var,  # cabin
-    )
-    assert np.isnan(sample_input_data.loc[709,'Age'])
+    imputer = WeathersitImputer(config.model_config.weathersit_var)
 
     # When
-    subject = transformer.fit(sample_input_data).transform(sample_input_data)
+    imputed = imputer.fit(sample_input_data).transform(sample_input_data)
 
     # Then
-    assert subject.loc[709,'Age'] == 21
+    assert imputed.loc[12230, "weathersit"] is not None
