@@ -26,6 +26,7 @@ jobs:
     - name: entering correct directory
       run: |
         cd bikeshare_project
+        pwd
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
